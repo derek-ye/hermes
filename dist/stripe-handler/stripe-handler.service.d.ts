@@ -1,3 +1,5 @@
 export declare class StripeHandlerService {
-    queryStripe(): Promise<void>;
+    queryStripe(): Promise<{
+        id: any;
+    }>;
 }

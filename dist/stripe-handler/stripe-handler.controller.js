@@ -17,16 +17,33 @@ let StripeHandlerController = class StripeHandlerController {
         this.stripeHandlerService = stripeHandlerService;
     }
     getStripe() {
-        this.stripeHandlerService.queryStripe();
-        return 'hola mi amigo! your money is safe with us!';
+        return this.stripeHandlerService.queryStripe();
+    }
+    getSuccess() {
+        return 'Your payment has been processed :)';
+    }
+    getCancel() {
+        return 'Your payment has been cancelled :(';
     }
 };
 __decorate([
-    common_1.Get(),
+    common_1.Post('create-checkout-session'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
-    __metadata("design:returntype", String)
+    __metadata("design:returntype", Promise)
 ], StripeHandlerController.prototype, "getStripe", null);
+__decorate([
+    common_1.Get('create-checkout-session/success'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], StripeHandlerController.prototype, "getSuccess", null);
+__decorate([
+    common_1.Get('create-checkout-session/cancel'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], StripeHandlerController.prototype, "getCancel", null);
 StripeHandlerController = __decorate([
     common_1.Controller('stripe'),
     __metadata("design:paramtypes", [stripe_handler_service_1.StripeHandlerService])
